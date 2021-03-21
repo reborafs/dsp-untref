@@ -1,33 +1,26 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Mar 20 15:51:23 2021
-
-@author: luna
-"""
-
 
 import numpy as np
 
 def valor_medio(x):
-    N = len(x)
-    u = np.dot((1/N), (np.sum(x, initial=0, where= N-1)))
+    u = (1/len(x))*np.sum(x)
     return u
 
 def desvio_medio(x):
     N = len(x)
-    u = np.dot((1/N), (np.sum(x, initial=0, where= N-1)))
-    d = np.dot((1/N),(np.sum(np.absolute(x-u), initial= 0, where= N)))
+    u = (1/N)*np.sum(x)
+    d = (1/N)*np.sum(abs(x-u))
     return d
 
 def desvio_estandar(x):
     N = len(x)
-    u = np.dot((1/N), (np.sum(x, initial=0, where= N-1)))
-    tau = np.dot((1/N),(np.sum(np.absolute((x-u)**2), initial= 0, where= N)))
+    u = (1/N)*(np.sum(x))
+    tau = np.sqrt((1/(N-1))*(np.sum(abs((x-u)**2))))
     return tau 
 
 def rms(x):
     N = len(x)
-    rms = np.sqrt(np.dot((1/N),(np.sum(np.absolute(x**2), initial= 0, where= N))))
+    rms = np.sqrt((1/N)*np.sum(abs(x**2)))
     return rms
     
 
@@ -65,6 +58,28 @@ desvio_estandar3 = desvio_estandar(x3)
 rms1 = rms(x1)
 rms2 = rms(x2)
 rms3 = rms(x3)
+
+
+#============================================================================#
+#                               NUMPY TEST
+#============================================================================#
+
+# valor1 = np.mean(x1)
+# valor2 = np.mean(x2)
+# valor3 = np.mean(x3)
+
+#3 No se encuentra funcion equivalente en numpy.
+# desvio_medio1 = desvio_medio(x1)
+# desvio_medio2 = desvio_medio(x2)
+# desvio_medio3 = desvio_medio(x3)
+
+# desvio_estandar1 = np.std(x1)
+# desvio_estandar2 = np.std(x2)
+# desvio_estandar3 = np.std(x3)
+
+# rms1 = np.sqrt(np.mean(x1**2))
+# rms2 = np.sqrt(np.mean(x2**2))
+# rms3 = np.sqrt(np.mean(x3**2))
 
 
 print('''\nLos valores medios para las señales son: \n

@@ -74,6 +74,37 @@ print('''\n El SNR para la señal x01 es ''' , SNR_x01)
 print('''\n El SNR para la señal x1 es ''' , SNR_x1)
 print('''\n El SNR para la señal x3 es ''' , SNR_x3)
 
+#Analizo lo mismo pero sin la componente de continua
+xm =  x_2 + x_3
+
+x01m = xm + ruido01
+x1m = xm + ruido1
+x3m = xm + ruido3
+
+SNR_x01m = max(x01m/desvio_estandar(ruido01))
+SNR_x1m = max(x1m/desvio_estandar(ruido1))
+SNR_x3m = max(x3m/desvio_estandar(ruido3))
+
+print('''\n El SNR para la señal x01 sin  la componente de continua es ''' , SNR_x01m)
+print('''\n El SNR para la señal x1 sin  la componente de continua es ''' , SNR_x1m)
+print('''\n El SNR para la señal x3  sin  la componente de continua es ''' , SNR_x3m)
 
 
+#Analizo lo mismo pero aumentando el valor de la componente de continua
+x_con = 10*np.ones_like(vector_t)
+xn = x_con+ x_2 + x_3
 
+x01n = xn + ruido01
+x1n = xn + ruido1
+x3n = xn + ruido3
+
+SNR_x01n= max(x01n/desvio_estandar(ruido01))
+SNR_x1n= max(x1n/desvio_estandar(ruido1))
+SNR_x3n= max(x3n/desvio_estandar(ruido3))
+
+print('''\n El SNR para la señal x01 aumentando la componente de continua de amplitud 10 es ''' , SNR_x01n)
+print('''\n El SNR para la señal x1 aumentando la componente de continua de amplitud 10 es ''' , SNR_x1n)
+print('''\n El SNR para la señal x3  aumentando la componente de continua de amplitud 10 es ''' , SNR_x3n)
+
+print('''\n \n \n A modo de conclusión, a medida que aumenta la amplitud \n
+      de la componente de constante continua, aumenta el valor de SNR.''')

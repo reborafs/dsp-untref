@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 22 23:00:02 2021
 
-@author: luna
-"""
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import norm
 
 def desvio_estandar(x):
     N = len(x)
     u = (1/N)*(np.sum(x))
     tau = np.sqrt((1/(N-1))*(np.sum(abs((x-u)**2))))
     return tau 
+
+# =============================================================================
+#               SENALES DEL EJERCICIO 1
+# =============================================================================
 
 t = 1
 fs = 44100
@@ -35,6 +36,8 @@ x_3 = np.sin(2*np.pi*f3*vector_t)*(np.e**(-exp3))
 
 x = x_1 + x_2 + x_3
 
+
+# GENERACION DE RUIDO
 ruido01 = np.random.normal(loc = 0, scale = 0.1, size = fs*t)
 ruido1 = np.random.normal(loc = 0, scale = 1, size = fs*t)
 ruido3 = np.random.normal(loc = 0, scale = 3, size = fs*t)
@@ -44,20 +47,25 @@ x1 = x + ruido1
 x3 = x + ruido3
 
 
-#vectores normalizados
-Nx01 = x01/max(x01)
-Nx1 = x1/max(x1)
-Nx3 = x3/max(x3)
+# NORMALIZACION DE SENAL + RUIDO
+Nx01 = x01/max(abs(x01))
+Nx1 = x1/max(abs(x1))
+Nx3 = x3/max(abs(x3))
+
+
+# =============================================================================
+#                              PLOTEO
+# =============================================================================
 
 fig, axs = plt.subplots(2, 2, sharex=True, sharey=True)
 axs[0, 0].plot(vector_t, x)
-axs[0, 0].set_title('x(t)')
+axs[0, 0].set_title(r'$x(t)$')
 axs[0, 1].plot(vector_t, Nx01, color='orange')
-axs[0, 1].set_title('(x01)(t)')
+axs[0, 1].set_title('$x_{0.1}(t)$')
 axs[1, 0].plot(vector_t, Nx1, color='green')
-axs[1, 0].set_title('(x1)(t)')
+axs[1, 0].set_title('$x_1(t)$')
 axs[1, 1].plot(vector_t, Nx3, color='black')
-axs[1, 1].set_title('(x3)(t)')
+axs[1, 1].set_title('$x_3(t)$')
 fig.tight_layout()
 
 for ax in axs.flat:
@@ -65,6 +73,11 @@ for ax in axs.flat:
     ax.grid()
     
 plt.show()
+
+
+# =============================================================================
+#                       
+# =============================================================================
 
 SNR_x01= max(x01/desvio_estandar(ruido01))
 SNR_x1= max(x1/desvio_estandar(ruido1))
@@ -106,5 +119,5 @@ print('''\n El SNR para la señal x01 aumentando la componente de continua de am
 print('''\n El SNR para la señal x1 aumentando la componente de continua de amplitud 10 es ''' , SNR_x1n)
 print('''\n El SNR para la señal x3  aumentando la componente de continua de amplitud 10 es ''' , SNR_x3n)
 
-print('''\n \n \n A modo de conclusión, a medida que aumenta la amplitud \n
-      de la componente de constante continua, aumenta el valor de SNR.''')
+print('''\n\n\n A modo de conclusión, a medida que aumenta la amplitud 
+de la componente de constante continua, aumenta el valor de SNR.''')

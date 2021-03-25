@@ -25,7 +25,7 @@ exp2 = ((vector_t-u2)**2)/(2*(sigma2**2))
 
 f3 = 500
 u3 = 0.7
-sigma3 = 0.007
+sigma3 = 0.07
 exp3 = ((vector_t-u3)**2)/(2*(sigma3**2))
 
 
@@ -48,6 +48,7 @@ x3 = x + ruido3
 
 
 # NORMALIZACION DE SENAL + RUIDO
+Nx = x/max(abs(x))
 Nx01 = x01/max(abs(x01))
 Nx1 = x1/max(abs(x1))
 Nx3 = x3/max(abs(x3))
@@ -58,7 +59,7 @@ Nx3 = x3/max(abs(x3))
 # =============================================================================
 
 fig, axs = plt.subplots(2, 2, sharex=True, sharey=True)
-axs[0, 0].plot(vector_t, x)
+axs[0, 0].plot(vector_t, Nx)
 axs[0, 0].set_title(r'$x(t)$')
 axs[0, 1].plot(vector_t, Nx01, color='orange')
 axs[0, 1].set_title('$x_{0.1}(t)$')

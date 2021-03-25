@@ -35,7 +35,7 @@ exp2 = ((vector_t-u2)**2)/(2*(sigma2**2))
 
 f3 = 500
 u3 = 0.7
-sigma3 = 0.007
+sigma3 = 0.07
 exp3 = ((vector_t-u3)**2)/(2*(sigma3**2))
 
 

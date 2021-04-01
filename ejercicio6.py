@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sounddevice as sd
 
-
 def mediamovild(x,M):
     '''
     This function implements a moving average filter with a direct method.
@@ -21,14 +20,12 @@ def mediamovild(x,M):
     Returns
     -------
     filtered_signal : ndarray
-        DESCRIPTION.
-
+        Output filtered signal.
     '''
     filtered_signal = np.zeros(len(x)-M+1)
     for i in range(len(x)-M+1):
         filtered_signal[i] = np.sum(x[i:i+M])/M
     return filtered_signal
-
 
 def mediamovildr(x,M):
     '''
@@ -45,8 +42,7 @@ def mediamovildr(x,M):
     Returns
     -------
     filtered_signal : ndarray
-        DESCRIPTION.
-
+        Output filtered signal.
     '''
     filtered_signal = np.zeros(len(x)-M+1)
     filtered_signal[0] = np.sum(x[:M])
@@ -61,7 +57,6 @@ def mediamovildr(x,M):
 # CUIDADO: HAY QUE FIJARSE SI ESTA BIEN QUE LA SENAL ARRANQUE EN CERO PARA 
 # EL METODO RECURSIVO PORQUE, EN REALIDAD, AL USAR EL METODO SIMETRICO 
 # DEBERIA ARRANCAR EN LA MITAD DE LA VENTANA.
-
 
 
 # =============================================================================

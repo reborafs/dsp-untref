@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  1 10:54:12 2021
 
-@author: luna
-"""
 import numpy as np
 from scipy.signal import convolve
 from matplotlib import pyplot as plt

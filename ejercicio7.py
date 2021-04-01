@@ -5,34 +5,50 @@ Created on Thu Apr  1 10:54:12 2021
 @author: luna
 """
 import numpy as np
+from scipy.signal import convolve
 from matplotlib import pyplot as plt
+import sounddevice as sd
 
-def h_convo(x, M):
-    escalon = np.concatenate((np.ones(M),np.zeros(len(x)-M+1)))
-    
-    y = np.zeros(len(x)-M+1)
-   
-    for i in range(len(x)-M+1):
-        
-        y = (np.convolve(x,escalon))/M
 
+def mediamovil_conv(x, M):
+    '''
+    Scipy implementation of a moving average filter with a convolutional method.
+    The resulting filtered sample is calculated with a convolution between the
+    original signal and a rectangular pulse with length 'M'.
+
+    Parameters
+    ----------
+    x : ndarray
+        Input signal. 
+    M : int
+        Window length.
+
+    Returns
+    -------
+    y : ndarray
+        Output filtered signal.
+
+    '''
+    h = np.ones(M)/M
+    y = convolve(x,h)
     return y
 
-t = np.linspace(0,3,3*10)
-x = 0.5*np.sin(2*np.pi*500*t)
-ruido = np.random.normal(0,1,3*10)
-xr =  x + ruido
 
-y = h_convo(xr, 10)
+# t = 3
+# fs = 44100
+# vector_t = np.linspace(0,t,t*fs)
+# signal = np.sin(2*np.pi*500*vector_t)
+# noise = 0.1*np.random.normal(0,0.5, len(vector_t))
+# x = signal + noise
 
-fig, axs= plt.subplots(2,1, constrained_layout=True)
-axs[0].plot(t, xr) 
-axs[0].grid(True)
-axs[0].set_xlabel('tiempo [s]')
-axs[0].set_ylabel('amplitud')
-axs[0].set_title('Señal original con ruido')
-axs[1].plot(t, y)
-axs[1].set_title('Señal filtrada')
-axs[1].grid(True)
-plt.show ()
+# y = mediamovil_conv(x, 5)
 
+# plt.plot(x)
+# plt.plot(y)
+
+# sd.play(signal,fs)
+# sd.wait()
+# sd.play(x,fs)
+# sd.wait()
+# sd.play(y,fs)
+# sd.wait()

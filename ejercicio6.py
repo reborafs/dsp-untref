@@ -24,7 +24,7 @@ def mediamovild(x,M):
     '''
     filtered_signal = np.zeros(len(x)-M+1)
     for i in range(len(x)-M+1):
-        filtered_signal[i] = np.sum(x[i:i+M])/M
+        filtered_signal[i] = np.sum(x[i:i+M])/(M+1)
     return filtered_signal
 
 def mediamovildr(x,M):
@@ -51,7 +51,7 @@ def mediamovildr(x,M):
     for i in range(1, len(x)-M+1):
         filtered_signal[i] = filtered_signal[i-1] + x[i + P] - x[i -(P+1)]
     
-    filtered_signal = filtered_signal/M
+    filtered_signal = filtered_signal/(M+1)
     return filtered_signal
 
 # CUIDADO: HAY QUE FIJARSE SI ESTA BIEN QUE LA SENAL ARRANQUE EN CERO PARA 

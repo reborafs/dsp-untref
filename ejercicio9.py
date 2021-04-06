@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-@author: franco
-"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -93,7 +90,7 @@ plt.figure()
 plt.plot(vector_t,f_x_with_noise,'orange')
 plt.plot(vector_t, x_with_noise)
 plt.title(r'$f´(x_{noise})$')
-plt.xlabel('tiempo[s]')
+plt.xlabel('Tiempo[s]')
 plt.ylabel('Amplitud')
 plt.grid(True)
 plt.show()

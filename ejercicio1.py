@@ -38,3 +38,5 @@ fig.tight_layout()
 for ax in axs.flat:
     ax.set(xlabel='Tiempo [s]', ylabel='Amplitud')
     ax.grid()
+
+plt.show()

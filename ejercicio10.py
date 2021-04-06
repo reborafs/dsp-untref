@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Apr  2 16:00:50 2021
 
-@author: luna
-"""
-# 10 Convolucionar linealmente la señal Midi69.wav (buscarla en la carpeta del aula virtual) con la
+# Convolucionar linealmente la señal Midi69.wav (buscarla en la carpeta del aula virtual) con la
 # respuesta al impulso resp_imp.wav (en la misma carpeta). Luego convolucionar en forma circular
 # las dos señales con un largo igual a la señal respuesta al impulso. Finalmente, calcular con
 # convolución circular modificando las señales de forma tal de que el resultado sea igual a la

@@ -30,21 +30,21 @@ def mediamovil_conv(x, M):
     return y
 
 
-# t = 3
-# fs = 44100
-# vector_t = np.linspace(0,t,t*fs)
-# signal = np.sin(2*np.pi*500*vector_t)
-# noise = 0.1*np.random.normal(0,0.5, len(vector_t))
-# x = signal + noise
+t = 3
+fs = 44100
+vector_t = np.linspace(0,t,t*fs)
+signal = np.sin(2*np.pi*500*vector_t)
+noise = 0.1*np.random.normal(0,0.5, len(vector_t))
+x = signal + noise
 
-# y = mediamovil_conv(x, 5)
+y = mediamovil_conv(x, 5)
 
-# plt.plot(x)
-# plt.plot(y)
+plt.plot(x)
+plt.plot(y)
 
-# sd.play(signal,fs)
-# sd.wait()
-# sd.play(x,fs)
-# sd.wait()
-# sd.play(y,fs)
-# sd.wait()
+sd.play(signal,fs)
+sd.wait()
+sd.play(x,fs)
+sd.wait()
+sd.play(y,fs)
+sd.wait()

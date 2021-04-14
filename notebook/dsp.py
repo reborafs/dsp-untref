@@ -264,7 +264,7 @@ def mediamovil_conv(x, M):
 
     '''
     h = np.ones(M)/M
-    y = convolve(x,h)
+    y = np.convolve(x,h)
     return y
 
 # =============================================================================
@@ -296,7 +296,7 @@ def blackmanfilt(x, M, a0=0.42, a1=0.5, a2=0.08):
     '''
     n = np.arange(M)
     blackman = a0+a1*np.cos(2*np.pi*n/(M-1))+a2*np.cos(4*np.pi*n/(M-1))
-    y = convolve(x,blackman)
+    y = np.convolve(x,blackman)
     y = y/max(abs(y))
     return y
 

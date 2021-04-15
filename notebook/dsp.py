@@ -205,15 +205,15 @@ def _periodic_summation(x, period):
     return np.sum(x, axis=0)
 
 
-def conv_zero_padding(in1, in2):
+def conv_zero_padding(signal, respuesta_impulso):
     '''
     
 
     Parameters
     ----------
-    in1 : TYPE
+    signal : TYPE
         DESCRIPTION.
-    in2 : TYPE
+    respuesta_impulso : TYPE
         DESCRIPTION.
 
     Returns
@@ -330,3 +330,4 @@ def derivada_discreta(x,vector_t):
     
     return f_de_x
     
+

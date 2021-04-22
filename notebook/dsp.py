@@ -7,36 +7,34 @@ from scipy import signal
 # =============================================================================
 def valor_medio(x):
     '''
-    
+    Calcula el valor medio de un array utilizando la libreria numpy.
 
     Parameters
     ----------
-    x : TYPE
-        DESCRIPTION.
+    x : ndarray
+        Array de entrada.
+
 
     Returns
     -------
-    u : TYPE
-        DESCRIPTION.
-
+    u : float
+        Valor medio del array.
     '''
     u = (1/len(x))*np.sum(x)
     return u
 
 def desvio_medio(x):
     '''
-    
+    Calcula el desvio medio de un array utilizando la libreria numpy.
 
     Parameters
     ----------
-    x : TYPE
-        DESCRIPTION.
-
+    x : ndarray
+        Array de entrada.
     Returns
     -------
-    d : TYPE
-        DESCRIPTION.
-
+    d : float
+        Desvio medio del array.
     '''
     N = len(x)
     u = (1/N)*np.sum(x)
@@ -45,17 +43,17 @@ def desvio_medio(x):
 
 def desvio_estandar(x):
     '''
-    
+    Calcula el desvio estandar de un array utilizando la libreria numpy.
 
     Parameters
     ----------
-    x : TYPE
-        DESCRIPTION.
+    x : ndarray
+        Array de entrada.
 
     Returns
     -------
-    tau : TYPE
-        DESCRIPTION.
+    tau : float
+        Desvio estandar del array.
 
     '''
     N = len(x)
@@ -65,17 +63,17 @@ def desvio_estandar(x):
 
 def rms(x):
     '''
-    
+    Calcula el valor RMS de un array utilizando la libreria numpy.
 
     Parameters
     ----------
-    x : TYPE
-        DESCRIPTION.
+    x : ndarray
+        Array de entrada.
 
     Returns
     -------
-    rms : TYPE
-        DESCRIPTION.
+    rms : float
+        Valor RMS del array.
 
     '''
     N = len(x)
@@ -207,21 +205,21 @@ def _periodic_summation(x, period):
 
 def conv_zero_padding(signal, respuesta_impulso):
     '''
-    
+    Zero padding for two signals. Returns both signals with the same length.
 
     Parameters
     ----------
-    signal : TYPE
-        DESCRIPTION.
-    respuesta_impulso : TYPE
-        DESCRIPTION.
+    signal : ndarray
+        Input array
+    respuesta_impulso : ndarray
+        Input array.
 
     Returns
     -------
-    in1 : TYPE
-        DESCRIPTION.
-    in2 : TYPE
-        DESCRIPTION.
+    in1 : ndarray
+        Output array with zero padding if necessary.
+    in2 : ndarray
+        Output array with zero padding if necessary.
 
     '''
     
@@ -273,25 +271,27 @@ def mediamovil_conv(x, M):
 
 def blackmanfilt(x, M, a0=0.42, a1=0.5, a2=0.08):
     '''
+    Numpy implementation of a blackman filter with a convolutional method.
+    The resulting filtered sample is calculated with a convolution between the
+    original signal and a blackman window with length 'M'.
     
-
     Parameters
     ----------
-    x : TYPE
-        DESCRIPTION.
-    M : TYPE
-        DESCRIPTION.
-    a0 : TYPE, optional
-        DESCRIPTION. The default is 0.42.
-    a1 : TYPE, optional
-        DESCRIPTION. The default is 0.5.
-    a2 : TYPE, optional
-        DESCRIPTION. The default is 0.08.
+    x : ndarray
+        Input array.
+    M : int
+        Window length.
+    a0 : float, optional
+        First coefficient of the blackman window. The default is 0.42.
+    a1 : float, optional
+        Second coefficient of the blackman window. The default is 0.5.
+    a2 : float, optional
+        Second coefficient of the blackman window. The default is 0.08.
 
     Returns
     -------
-    y : TYPE
-        DESCRIPTION.
+    y : ndarray
+        Filtered normalized signal.
 
     '''
     n = np.arange(M)
@@ -307,19 +307,19 @@ def blackmanfilt(x, M, a0=0.42, a1=0.5, a2=0.08):
 
 def derivada_discreta(x,vector_t):
     '''
-    
+    Calculates the discrete derivative of an array using the numpy library.    
 
     Parameters
     ----------
-    x : TYPE
-        DESCRIPTION.
+    x : ndarray
+        Input array, refers to the ordinate values.
     vector_t : TYPE
-        DESCRIPTION.
+        The time vector, refers to the abscissa values.
 
     Returns
     -------
-    f_de_x : TYPE
-        DESCRIPTION.
+    f_de_x : ndarray
+        Discrete derivative.
 
     '''
     f_de_x = np.zeros(len(vector_t))

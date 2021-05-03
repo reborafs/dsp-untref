@@ -8,4 +8,6 @@ pip install matplotlib
 RUN conda install -c conda-forge pysoundfile
 RUN conda install -c conda-forge librosa
 
+ADD TPs TPs
+
 CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
